@@ -6,9 +6,9 @@
 # Exit immediately if a command exits with a non-zero status.
 set -e
 
-# 1. System Update and Upgrade
-echo "--- Updating and upgrading system packages ---"
-sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove -y
+# 1. System Update
+echo "--- Updating system packages ---"
+sudo apt-get update -y
 
 # 2. Install Core Packages
 echo "--- Installing core development packages ---"
