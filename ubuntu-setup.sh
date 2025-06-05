@@ -27,9 +27,17 @@ sudo apt-get install -y \
 
 # 3. Configure Git Alias
 echo "--- Adding 'gac' git alias to .bashrc ---"
-echo '' >> ~/.bashrc
-echo '# Custom alias for git add and commit' >> ~/.bashrc
-echo 'alias gac='\''function _gac() { if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then git add . && git commit -m "$1"; else echo "Not a Git repository"; fi; }; _gac'\'' >> ~/.bashrc
+cat <<'EOF' >> ~/.bashrc
+
+# Custom function for git add and commit
+gac() {
+    if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+        git add . && git commit -m "$1"
+    else
+        echo "Not a Git repository"
+    fi
+}
+EOF
 
 # 4. Install NVM (Node Version Manager) and Node.js
 echo "--- Installing NVM and latest LTS Node.js ---"
@@ -49,7 +57,9 @@ echo "--- Verifying Node.js and npm installation ---"
 node --version
 npm --version
 
+source ~/.bashrc
+
 echo ""
 echo "--- Setup complete! ---"
-echo "Please restart your terminal or run 'source ~/.bashrc' to use nvm and the new 'gac' alias."
+echo "Please restart your terminal for the changes to take effect."
 
