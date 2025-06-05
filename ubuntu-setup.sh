@@ -25,7 +25,12 @@ sudo apt-get install -y \
     python3-pip \
     python3-venv
 
-# 3. Configure Git Alias
+# 3. Configure Git
+echo "--- Configuring Git ---"
+git config --global user.email "emil.stahl@icloud.com"
+git config --global user.name "Emil Ståhl"
+
+# 4. Configure Git Alias
 echo "--- Adding 'gac' git alias to .bashrc ---"
 cat <<'EOF' >> ~/.bashrc
 
@@ -39,7 +44,7 @@ gac() {
 }
 EOF
 
-# 4. Install NVM (Node Version Manager) and Node.js
+# 5. Install NVM (Node Version Manager) and Node.js
 echo "--- Installing NVM and latest LTS Node.js ---"
 export NVM_DIR="$HOME/.nvm"
 # The original script had an invalid nvm version (v0.40.1), so I am using a recent stable version (v0.39.7).
