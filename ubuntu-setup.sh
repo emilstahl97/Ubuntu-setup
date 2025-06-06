@@ -23,7 +23,9 @@ sudo apt-get install -y \
     unzip \
     python3 \
     python3-pip \
-    python3-venv
+    python3-venv \
+    nodejs \
+    npm
 
 # 3. Configure Git
 echo "--- Configuring Git ---"
@@ -44,25 +46,10 @@ gac() {
 }
 EOF
 
-# 5. Install NVM (Node Version Manager) and Node.js
-echo "--- Installing NVM and latest LTS Node.js ---"
-export NVM_DIR="$HOME/.nvm"
-# The original script had an invalid nvm version (v0.40.1), so I am using a recent stable version (v0.39.7).
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-
-# Source NVM script to make nvm command available in this script execution
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-# Install and use the latest LTS version of Node.js
-nvm install --lts
-nvm use --lts
-nvm alias default lts
-
+# 5. Verify Node.js and npm installation
 echo "--- Verifying Node.js and npm installation ---"
 node --version
 npm --version
-
-source ~/.bashrc
 
 echo ""
 echo "--- Setup complete! ---"
